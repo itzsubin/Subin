@@ -15,7 +15,7 @@ function Contact() {
 
 
   const API_BASE_URL = process.env.NODE_ENV === 'production' 
-    ? 'https://your-production-api.com' 
+    ? '' 
     : 'http://localhost:5055';
 
   useEffect(() => {
@@ -68,7 +68,7 @@ function Contact() {
     setSubmitStatus(null);
 
     try {
-      const response = await axios.post(`${API_BASE_URL}/api/contact`, formData, {
+      const response = await axios.post(`/api/contact`, formData, {
         headers: {
           'Content-Type': 'application/json'
         }
