@@ -67,12 +67,15 @@ function Contact() {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-    try {
-      const response = await axios.post(`/api/contact`, formData, {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
+  try {
+    const response = await axios.post(
+      `${API_BASE_URL}/api/contact`, 
+      formData,
+      {
+        headers: { 'Content-Type': 'application/json' },
+        timeout: 5000
+      }
+    );
       
       if (response.status === 200) {
         setSubmitStatus('success');

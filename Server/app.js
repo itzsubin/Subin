@@ -15,8 +15,7 @@ const app = express();
 app.use(helmet());
 
 app.use(cors({
-  origin: [process.env.CLIENT_URL || 'http://localhost:3000', 
-  'https://*.vercel.app'],
+  origin: process.env.CLIENT_URL || 'http://localhost:3000', 
   methods: ['GET', 'POST', 'OPTIONS'], //for preflight
   allowedHeaders: ['Content-Type'],
   credentials: true,
