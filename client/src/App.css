@@ -1,0 +1,244 @@
+/*  ROOT VARIABLES */
+:root {
+  /* Colors */
+  --background-color: #fff;
+  --text-color: #222;
+  --btn-color: #008000;
+  --btn-text-color: #fff;
+  --form-text-color: #555;
+  --footer-text-color: #495057;
+  --error-color: #e74c3c;
+  --success-color: #27ae60;
+  --disabled-color: #95a5a6;
+
+  /* Borders */
+  --btn-border: 2px solid rgba(0, 0, 0, 0.1);
+  --input-border: 1px solid #ddd;
+  --input-focus-border: 1px solid #008000;
+  --footer-border-color: #dee2e6;
+
+  /* Shadows */
+  --input-focus-shadow: 0 0 0 2px rgba(0, 128, 0, 0.2);
+
+  /* Backgrounds */
+  --project-card-bg: #ffffff00;
+  --input-bg: #fff;
+  --error-bg: #f8d7da;
+  --success-bg: #d4edda;
+  --spinner-color: #fff;
+
+  /* Sizing */
+  --form-border-radius: 4px;
+  --form-padding: 0.8rem;
+  
+  /* Animation */
+  --transition-speed: 0.3s;
+}
+
+/* DARK THEME */
+[data-theme='dark'] {
+  --background-color: #222;
+  --text-color: #fff;
+  --btn-color: #fff;
+  --btn-text-color: #222;
+  --form-text-color: #fff;
+  --footer-text-color: #e9ecef;
+  --footer-border-color: #343a40;
+  --input-bg: #333;
+  --input-border: 1px solid #444;
+  --input-focus-border: 1px solid #4CAF50;
+  --input-focus-shadow: 0 0 0 2px rgba(76, 175, 80, 0.3);
+  --project-card-bg: #fff;
+  --error-bg: #442222;
+  --success-bg: #224422;
+  --disabled-color: #555;
+  --spinner-color: #222;
+}
+
+/* BASE STYLES */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition: 
+    background-color var(--transition-speed),
+    color var(--transition-speed),
+    border-color var(--transition-speed);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, 
+               Ubuntu, Cantarell, sans-serif;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* TYPOGRAPHY */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  color: var(--text-color);
+}
+
+h1 {
+  font-family: 'Rubik', sans-serif;
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+h2, h3 {
+  font-family: 'Roboto Mono', monospace;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
+p {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1rem;
+  font-weight: 450;
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+}
+
+/* FORM ELEMENTS */
+input,
+textarea,
+button,
+select {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1rem;
+  border-radius: var(--form-border-radius);
+  transition: 
+    border-color var(--transition-speed),
+    box-shadow var(--transition-speed),
+    background-color var(--transition-speed);
+}
+
+input:focus-visible,
+textarea:focus-visible,
+button:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--input-focus-border);
+  outline-offset: 2px;
+}
+
+/* UTILITY CLASSES */
+.sectionTitle {
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.sectionTitle::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background-color: var(--btn-color);
+  margin-top: 10px;
+}
+
+.hover {
+  cursor: pointer;
+  transition: transform var(--transition-speed);
+}
+
+.hover:hover {
+  transform: translateY(-2px);
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  color: var(--footer-text-color);
+  font-size: 0.75rem;
+  font-weight: 300;
+  padding: 20px 0;
+  margin-top: auto;
+  border-top: 1px solid var(--footer-border-color);
+}
+
+/* ANIMATIONS */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* ACCESSIBILITY */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* RESPONSIVE ADJUSTMENTS */
+@media (max-width: 768px) {
+  #root {
+    gap: 40px;
+    padding: 15px;
+  }
+  
+  .sectionTitle {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  #root {
+    gap: 30px;
+    padding: 10px;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  h2 {
+    font-size: 1.1rem;
+  }
+  
+  :root {
+    --form-padding: 0.7rem;
+  }
+}
