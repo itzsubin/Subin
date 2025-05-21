@@ -15,7 +15,7 @@ if (!process.env.VERCEL) {
 }
 
 
-if (!process.env.VERCEL) {
+
   const PORT = process.env.PORT || 5055;
   
   const server = app.listen(PORT, () => {
@@ -33,6 +33,6 @@ if (!process.env.VERCEL) {
       console.log('Server closed');
     });
   });
-}
+
 
 export default app;
