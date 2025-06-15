@@ -1,0 +1,52 @@
+.socialNav {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  gap: 1.6rem;
+  align-items: center;
+  padding: 1rem;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 0px;
+  transition: all 0.3s ease;
+
+}
+
+[data-theme='dark'] .socialNav {
+  background-color: rgba(34, 34, 34, 0.85);
+}
+
+.socialIcon {
+  width: 30px;
+  height: 30px;
+  transition: all 0.3s ease;
+  opacity: 0.9;
+}
+
+.socialIcon:hover {
+  opacity: 1;
+  transform: scale(1.1) rotate(4deg);
+}
+
+.blogIcon {
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
+}
+
+
+@media (max-width: 768px) {
+  .socialNav {
+    top: 10px;
+    right: 10px;
+    gap: 1rem;
+    padding: 0.75rem;
+  }
+  
+  .socialIcon {
+    width: 22px;
+    height: 22px;
+  }
+}

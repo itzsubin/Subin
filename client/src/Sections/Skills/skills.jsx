@@ -1,6 +1,6 @@
 import React from 'react'; // Add this import
 import styles from './skillsStyles.module.css';
-import ReactLogo from '../../assets/react.png'; // Changed from 'React' to 'ReactLogo'
+import ReactLogo from '../../assets/react.png'; 
 import HTMLLogo from '../../assets/Html.png';
 import PythonLogo from '../../assets/python.png';
 import CSSLogo from '../../assets/Css.png';
@@ -13,7 +13,7 @@ function Skills() {
   const { theme } = useTheme();
   
   const skillGroups = [
-    [HTMLLogo, CSSLogo, ReactLogo], // Using ReactLogo instead of React
+    [HTMLLogo, CSSLogo, ReactLogo], 
     [PythonLogo, CppLogo, CLogo],
     [GitLogo]
   ];
