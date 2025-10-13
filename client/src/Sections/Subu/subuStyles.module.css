@@ -20,7 +20,7 @@
   transform-style: preserve-3d;
   transition: transform 0.2s ease-out;
   cursor: pointer;
-  border-radius: 50px;
+  border-radius: 30px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   position: relative;
