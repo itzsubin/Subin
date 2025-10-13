@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import styles from './contactStyles.module.css';
 
 function Contact() {
@@ -13,10 +12,8 @@ function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
 
-
-const API_BASE_URL = process.env.NODE_ENV === 'production' 
-  ? '' 
-  : process.env.REACT_APP_API_BASE_URL_DEVELOPMENT;
+  // Use your Web3Forms access key directly
+  const WEB3FORMS_ACCESS_KEY = "7c71c301-e738-4370-bdb9-41b4330b52e9";
 
   useEffect(() => {
     let timer;
@@ -67,33 +64,32 @@ const API_BASE_URL = process.env.NODE_ENV === 'production'
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-  try {
-    const response = await axios.post(
-      `${API_BASE_URL}/api/contact`, 
-      formData,
-      {
-        headers: { 'Content-Type': 'application/json' },
-        timeout: 5000
-      }
-    );
+    try {
+      const formDataToSend = new FormData();
+      formDataToSend.append('access_key', WEB3FORMS_ACCESS_KEY);
+      formDataToSend.append('name', formData.name);
+      formDataToSend.append('email', formData.email);
+      formDataToSend.append('message', formData.message);
+      formDataToSend.append('subject', 'New Contact Form Submission from Portfolio');
       
-      if (response.status === 200) {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formDataToSend
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
         setSubmitStatus('success');
         setFormData({ name: '', email: '', message: '' });
         setErrors({});
+      } else {
+        throw new Error(result.message || 'Submission failed');
       }
+      
     } catch (error) {
       console.error('Submission error:', error);
       setSubmitStatus('error');
-      
-      // Fallback to mailto if error is due to API connection
-      if (error.code === 'ERR_NETWORK') {
-        const subject = encodeURIComponent('Portfolio Contact');
-        const body = encodeURIComponent(
-          `Name: ${formData.name}\nEmail: ${formData.email}\nMessage: ${formData.message}`
-        );
-        window.location.href = `mailto:subinghimire51@gmail.com?subject=${subject}&body=${body}`;
-      }
     } finally {
       setIsSubmitting(false);
     }
@@ -207,7 +203,7 @@ const API_BASE_URL = process.env.NODE_ENV === 'production'
               <path fill="currentColor" d="M13 13H11V7H13M13 17H11V15H13M12 2C6.48 2 2 6.48 2 12S6.48 22 12 22 22 17.52 22 12 17.52 2 12 2Z" />
             </svg>
             <p>
-              Failed to send message. Please try again or email me directly at 
+              Failed to send message. Please try again or email me directly at{' '}
               <a href="mailto:subinghimire51@gmail.com" className={styles.emailLink}>
                 subinghimire51@gmail.com
               </a>
