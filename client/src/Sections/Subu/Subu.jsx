@@ -7,7 +7,6 @@ import { useTheme } from '../../Common/ThemeContext';
 
 function Subu() {
   const {theme, toggleTheme } = useTheme();
-
   const themeIcon = theme === 'light' ? sun : moon; 
 
      const handleMouseMove = (e) => {
@@ -24,6 +23,12 @@ function Subu() {
         const handleMouseLeave = (e) => {
           e.currentTarget.style.transform = '';
         };   
+
+          const preventDefault = (f) => {
+            f.preventDefault();
+            f.stopPropagation();
+            return false;
+          };
   return (
   <section id="subu" className={styles.Container}>
      <div 
@@ -35,6 +40,12 @@ function Subu() {
                src={myPhoto}
                alt="Profile"
                className={styles.profilePhoto}
+               onContextMenu={preventDefault}
+               onDragStart={preventDefault}
+               onSelect={preventDefault}
+               onTouchStart={preventDefault}
+               onTouchMove={preventDefault}
+               onTouchEnd={preventDefault}
              />
              </div>
             <div className={styles.colormodecontainer}>

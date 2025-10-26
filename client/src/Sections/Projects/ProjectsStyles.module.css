@@ -19,11 +19,10 @@
   display: inline-block;
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
-  color: #111;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/*Center Section*/
+/* Center Section */
 .narrativeContainer {
   position: relative;
   z-index: 15;
@@ -38,17 +37,15 @@
 .sliderWrapper {
   width: 790px;
   margin: 0 auto;
-  position: 9relative;
+  position: relative; /* Fixed typo */
 }
-
-
 
 .sliderContainer {
   position: relative;
   width: 100%;
   height: 510px;
   margin: 2rem 0;
-  background: linear-gradient(145deg, rgba(255,255,255,0.25), rgba(240,240,240,0.1));
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.025), rgba(240, 240, 240, 0.008));
   border-radius: 16px;
   padding: 2rem;
   display: flex;
@@ -57,11 +54,17 @@
   overflow: hidden;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
+  /* Touch optimization */
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
 }
 
-.sliderContainer:hover {
-  transform: scale(1.02);
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+/* Desktop hover effects only */
+@media (hover: hover) and (pointer: fine) {
+  .sliderContainer:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+  }
 }
 
 .slider {
@@ -89,13 +92,12 @@
 
 .slideText {
   font-size: clamp(1.2rem, 2vw, 1.8rem);
-  color: #222;
   font-weight: 500;
   line-height: 1.6;
   text-align: center;
 }
 
-/*Navigation Buttons*/
+/* Navigation Buttons */
 .prevButton,
 .nextButton {
   position: absolute;
@@ -114,13 +116,21 @@
   z-index: 10;
   transition: all 0.3s ease;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  /* Touch optimization */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  min-width: 44px;
+  min-height: 44px;
 }
 
-.prevButton:hover,
-.nextButton:hover {
-  background: linear-gradient(145deg, #000, #333);
-  transform: translateY(-50%) scale(1.15);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+/* Desktop hover effects only */
+@media (hover: hover) and (pointer: fine) {
+  .prevButton:hover,
+  .nextButton:hover {
+    background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+    transform: translateY(-50%) scale(1.15);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+  }
 }
 
 .prevButton {
@@ -131,7 +141,7 @@
   right: 10px;
 }
 
-/*Dots*/
+/* Dots */
 .dotsContainer {
   display: flex;
   justify-content: center;
@@ -147,26 +157,42 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.4);
   cursor: pointer;
   border: none;
   transition: all 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.2);
+  /* Touch optimization */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  min-width: 15px;
+  min-height: 15px;
+}
+
+[data-theme='dark'] .dot {
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 .dot.activeDot {
-  background-color: #000;
+  background-color: #333;
   transform: scale(1.3);
-  box-shadow: 0 0 6px #000;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
 }
 
-.dot:hover {
-  background-color: rgba(0, 0, 0, 0.7);
+[data-theme='dark'] .dot.activeDot {
+  background-color: #fff;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
 }
 
-/*Hover Glow Animation*/
-.visible:hover {
-  animation: infiniteScale 1.5s infinite alternate;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+/* Desktop hover effects only */
+@media (hover: hover) and (pointer: fine) {
+  .dot:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .visible:hover {
+    animation: infiniteScale 1.5s infinite alternate;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  }
 }
 
 @keyframes infiniteScale {
@@ -178,7 +204,7 @@
   }
 }
 
-/*RESPONSIVE DESIGN*/
+/* RESPONSIVE DESIGN */
 @media (max-width: 1200px) {
   .sliderWrapper {
     max-width: 95%;
@@ -216,7 +242,7 @@
   }
 
   .sliderContainer {
-    height: 300px;
+    height: 380px;
     padding: 1rem;
     margin: 1rem 0;
     border-radius: 12px;
@@ -253,11 +279,59 @@
   }
   
   .sliderContainer {
-    height: 250px;
+    height: 350px;
     padding: 0.5rem;
   }
   
   .slideText {
+    height: 115px;
     font-size: 1rem;
+  }
+  
+  .prevButton,
+  .nextButton {
+    height: 35px;
+    width: 35px;
+  }
+}
+
+/*  touch screen */
+@media (hover: none) and (pointer: coarse) {
+  .sliderContainer {
+    transition: none;
+  }
+  
+  .sliderContainer:hover {
+    transform: none;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  }
+  
+  .prevButton,
+  .nextButton {
+    transition: none;
+  }
+  
+  .prevButton:hover,
+  .nextButton:hover {
+    transform: translateY(-50%);
+    background: linear-gradient(145deg, #222, #444);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .dotsContainer {
+    top: 270px;
+    gap: 11px;
+  }
+}
+
+@media only screen and (min-device-width: 834px) and (max-device-width: 1210px){
+  .sliderContainer{
+    height: 430px;
+    width: 720px;
+    left: -11px;
+  }
+
+  .dotsContainer{
+    height: 200px;
   }
 }

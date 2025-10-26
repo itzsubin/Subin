@@ -82,29 +82,97 @@
   }
 
   .logoGroup {
-    gap: 1.5rem;
+    gap: 1rem;
   }
 
   .logo {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
+    transition: transform 0.2s ease, filter 0.2s ease;
+  }
+
+    .logo:active {
+    transform: scale(0.95);
   }
 
   .logoDivider {
     width: 90%;
   }
+
 }
 
 @media (max-width: 480px) {
   .logo {
-    width: 60px;
-    height: 60px;
+    width: 90px;
+    height: 90px;
+
+  }
+  
+  .skillsContainer {
+    gap: 1rem;
   }
   
   .logoGroup {
+    gap: 0.5rem; 
+  }
+
+}
+@media only screen and (hover: none) and (pointer: coarse) and (max-width: 480px){
+   .logo {
+    width: 90px;
+    height: 90px;
+    filter: brightness(1.1);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    touch-action: manipulation;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    /* pointer-events: none; - blocking all interactions */
+
+  }
+  
+  .skillsContainer {
     gap: 1rem;
+  }
+  
+  .logoGroup {
+    gap: 0.5rem; 
+  }
+
+  .logo:hover {
+    transform: none;
+  }
+
+  .logo:active {
+    transform: scale(0.85); 
+    filter: grayscale(0%) brightness(1.25);
+    transition: transform 0.1s ease, filter 0.1s ease;
   }
 }
 
+@media only screen and (hover: none) and (pointer: coarse){
+  .logo{
+    filter: brightness(1.1);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    touch-action: manipulation;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+  }
+
+   .logo:hover{
+    transform: none;
+   }
+
+   .logo:active{
+     transform: scale(0.85); 
+    filter: grayscale(0%) brightness(1.25);
+    transition: transform 0.1s ease, filter 0.1s ease;
+   }
+}
 
 

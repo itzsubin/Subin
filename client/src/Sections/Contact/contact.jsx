@@ -12,8 +12,9 @@ function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
 
-  // Use your Web3Forms access key directly
-  const WEB3FORMS_ACCESS_KEY = "7c71c301-e738-4370-bdb9-41b4330b52e9";
+  
+  const WEB3FORMS_ACCESS_KEY = process.env.REACT_APP_WEB3FORMS_ACCESS_KEY;
+
 
   useEffect(() => {
     let timer;
@@ -22,6 +23,7 @@ function Contact() {
     }
     return () => clearTimeout(timer);
   }, [submitStatus]);
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -61,20 +63,34 @@ function Contact() {
     
     if (!validateForm()) return;
 
+    const accessKey = WEB3FORMS_ACCESS_KEY;
+
+    if (!accessKey) {
+      console.error('Web3Forms access key is missing');
+      setSubmitStatus('error');
+      return;
+    }
+
+    console.log('Submitting with access key:', accessKey);
+
     setIsSubmitting(true);
     setSubmitStatus(null);
 
     try {
-      const formDataToSend = new FormData();
-      formDataToSend.append('access_key', WEB3FORMS_ACCESS_KEY);
-      formDataToSend.append('name', formData.name);
-      formDataToSend.append('email', formData.email);
-      formDataToSend.append('message', formData.message);
-      formDataToSend.append('subject', 'New Contact Form Submission from Portfolio');
-      
+      const payload = {
+        access_key: accessKey,
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+        subject: 'New Contact Form Submission from Portfolio'
+      };
+
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        body: formDataToSend
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload)
       });
 
       const result = await response.json();
@@ -95,6 +111,7 @@ function Contact() {
     }
   };
 
+
   return (
     <section id="contact" className={styles.container} aria-labelledby="contact-heading">
       <div className={styles.info}>
@@ -102,12 +119,14 @@ function Contact() {
         <p>Feel free to reach out for collaborations or questions!</p>
       </div>
       
+
       <form 
         onSubmit={handleSubmit} 
         className={styles.contactForm} 
         noValidate
         aria-label="Contact form"
       >
+
         <div className={styles.formGroup}>
           <label htmlFor="name" className={styles.label}>
             Name <span className={styles.required} aria-hidden="true"></span>

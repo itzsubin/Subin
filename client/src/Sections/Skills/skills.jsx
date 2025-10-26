@@ -18,6 +18,26 @@ function Skills() {
     [GitLogo]
   ];
 
+            const preventDefault = (f) => {
+            f.preventDefault();
+            f.stopPropagation();
+            return false;
+          };
+
+            const handleTouchStart = (e) => {
+    const logo = e.currentTarget;
+    logo.style.transform = 'scale(0.85)';
+    logo.style.filter = theme === 'light' 
+      ? 'grayscale(0%) brightness(1.2)' 
+      : 'grayscale(0%) brightness(1.3)';
+  };
+
+  const handleTouchEnd = (e) => {
+    const logo = e.currentTarget;
+    logo.style.transform = '';
+    logo.style.filter = '';
+  };
+
   return (
     <section id='skills' className={styles.container}>
       <div className={styles.info}>
@@ -32,9 +52,24 @@ function Skills() {
                 <img
                   key={`logo-${groupIndex}-${logoIndex}`}
                   src={logo}
-                  alt={`${logo.split('/').pop().split('.')[0]} logo`}
+                 alt={`${logo.split('/').pop().split('.')[0]} logo`}
                   className={styles.logo}
                   data-theme={theme}
+                  onContextMenu={preventDefault}
+                  onDragStart={preventDefault}
+                  onSelect={preventDefault}
+                  onTouchStart={(e) => {
+                    preventDefault(e);
+                    handleTouchStart(e);
+                  }
+                  }
+
+                  onTouchMove={preventDefault}
+                  onTouchEnd={(e) => {
+                    preventDefault(e);
+                    handleTouchEnd(e);
+                  }}
+                  onTouchCancel={handleTouchEnd}
                 />
               ))}
             </div>

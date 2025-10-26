@@ -82,7 +82,11 @@
   max-width: 50ch;
   line-height: 1.6;
   font-size: clamp(1rem, 1.8vw, 1.1rem);
-  padding: 0 20px;
+  padding: 0 15px;
+  text-align: center;
+  word-spacing: -0.03em;
+  letter-spacing: 0em;
+  
 }
 
 button {
@@ -117,18 +121,116 @@ button:active {
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
 }
 
-@media (max-width: 768px) {
-  .Container {
+@media (max-width: 480px){
+   .Container {
+    gap: 20px;
+    padding-top: 60px;
+  }
+
+  .colormodecontainer {
+    top: 59px;
+    right: 20px;
+  }
+
+  .info {
+    gap: 15px;
+  }
+
+  .photoContainer {
+    overflow: hidden;
+    height: 350px;
+    width: 200px;
+
+
+  }
+  .profilePhoto {
+    height: 100%;
+    padding: 0rem;
+    width: 100%;
+
+}
+}
+
+@media only screen and (hover: none) and (pointer: coarse) and (max-width: 480px){
+   .Container {
     gap: 20px;
     padding-top: 60px;
   }
 
   .colormodecontainer {
     top: 50px;
-    right: 30px;
+    right: 28px;
   }
 
   .info {
     gap: 15px;
   }
+
+  .photoContainer {
+    overflow: hidden;
+    height: 340px;
+    width: 275px;
+    transition: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    touch-action: pan-x pan-y;
+
+  }
+  .profilePhoto {
+    height: 100%;
+    padding: 0rem;
+    width: 100%;
+    transition: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    pointer-events: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+    .photoContainer:hover .profilePhoto {
+    transform: none;
+  }
+}
+@media only screen and (hover: none) and (pointer: coarse){
+  .photoContainer{
+    transition: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    touch-action: pan-x pan-y;
+  }
+
+  .profilePhoto{
+    transition: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    pointer-events: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+      .photoContainer:hover .profilePhoto {
+    transform: none;
+  }
+}
+@media (min-device-width: 834px) and (max-device-width: 1210px)  {
+  .colormodecontainer{
+    right: 20px;
+    top: 80px;
+    left: 390px;
+  }
+
+  .Container{
+    height: 950px;
+    gap: 38px;
+  }
+
+
+
+
 }

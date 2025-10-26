@@ -68,6 +68,8 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+
 }
 
 body {
@@ -81,6 +83,14 @@ body {
   justify-content: center;
   min-height: 100vh;
   margin: 0 auto;
+  -webkit-overflow-scrolling: touch;
+    overscroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+
+    overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
 }
 
 #root {
@@ -90,6 +100,9 @@ body {
   width: 100%;
   min-height: 100vh;
   padding: 20px;
+
+    overflow-x: hidden;
+  max-width: 100%;
 }
 
 /* TYPOGRAPHY */
@@ -224,11 +237,14 @@ footer {
   }
 }
 
-@media (max-width: 480px) {
+@media (hover:none) and (pointer: coarse) and (max-width: 480px) {
   #root {
     gap: 30px;
     padding: 10px;
+    overflow-x: hidden;
+
   }
+
   
   h1 {
     font-size: 1.8rem;
@@ -241,4 +257,36 @@ footer {
   :root {
     --form-padding: 0.7rem;
   }
+}
+
+@media  (max-width: 480px) {
+  #root {
+    gap: 30px;
+    padding: 10px;
+
+
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  h2 {
+    font-size: 1.1rem;
+  }
+  
+  :root {
+    --form-padding: 0.7rem;
+  }
+}
+
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+
+::-webkit-scrollbar-thumb {
+  background: var(--btn-color);
+  border-radius: 10px;
 }
