@@ -4,7 +4,6 @@ import styles from './NavbarStyles.module.css';
 
 function Navbar() {
   const [activeSection, setActiveSection] = useState('');
-
   const { theme } = useTheme();
   const sections = useMemo(() => ['home', 'skills', 'projects', 'contact'], []);
 
@@ -12,7 +11,6 @@ function Navbar() {
     const scrollTop = window.scrollY;
     const winHeight = document.documentElement.scrollHeight - window.innerHeight;
     const scrolled = (scrollTop / winHeight) * 100;
-
 
     let current = '';
     let maxVisible = 0;
@@ -51,9 +49,7 @@ function Navbar() {
       }
     };
 
-
     handleScroll();
-
     window.addEventListener('scroll', throttledScroll, { passive: true });
     
     return () => {
@@ -61,45 +57,42 @@ function Navbar() {
     };
   }, [handleScroll]);
 
+  const handleNavClick = useCallback((e, section) => {
+    e.preventDefault();
+    const targetId = section === 'home' ? 'subu' : section;
+    const targetElement = document.getElementById(targetId);
+    
+    if (targetElement) {
+      
+      if (section === 'home' ) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, []);
+
   return (
-    <>
-
-
-      <nav
-        aria-label="Main navigation"
-        className={`${styles.navbar} ${theme === 'dark' ? styles.dark : styles.light}`}
-      >
-        <ul>
-          {sections.map((section) => (
-            <li
-              key={section}
-              className={activeSection === section ? styles.active : ''}
+    <nav
+      aria-label="Main navigation"
+      className={`${styles.navbar} ${theme === 'dark' ? styles.dark : styles.light}`}
+    >
+      <ul>
+        {sections.map((section) => (
+          <li
+            key={section}
+            className={activeSection === section ? styles.active : ''}
+          >
+            <a 
+              href={`#${section === 'home' ? 'subu' : section}`}
+              onClick={(e) => handleNavClick(e, section)}
             >
-              <a 
-                href={`#${section === 'home' ? 'subu' : section}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  const targetId = section === 'home' ? 'subu' : section;
-                  const targetElement = document.getElementById(targetId);
-                  if (targetElement) {
-
-                    const isMobil = window.innerWidth <= 480;
-
-                    if(section === 'home'&&isMobil){
-                      window.scrollTo({ top: 0, behaviour: 'smooth'});
-                    }else{
-                    targetElement.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }
-                }}
-              >
-                {section.charAt(0).toUpperCase() + section.slice(1)}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </>
+              {section.charAt(0).toUpperCase() + section.slice(1)}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 }
 

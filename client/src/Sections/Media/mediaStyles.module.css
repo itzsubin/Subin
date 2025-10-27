@@ -156,4 +156,23 @@
 
 }
 
+@media only screen and (max-width: 844px) and (orientation: landscape){
+  .socialNav{
+    left: 585px;
+    top: 57px;
+    padding: 0.4rem;
+    gap: 1rem;
+    position: relative;
+    backdrop-filter: blur(100%);
+    z-index: 1100;
+  }
+}
+@media only screen and (min-width: 834px) and (max-width: 1210px) and (orientation: landscape){
+  .socialNav{
+    left: 960px;
+    position: fixed;
+    top: 30px;
+  }
+}
+
 

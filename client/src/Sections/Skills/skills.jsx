@@ -1,5 +1,6 @@
 import React from 'react'; // Add this import
 import styles from './skillsStyles.module.css';
+import JSlogo from '../../assets/jslogo.png';
 import ReactLogo from '../../assets/react.png'; 
 import HTMLLogo from '../../assets/Html.png';
 import PythonLogo from '../../assets/python.png';
@@ -13,9 +14,9 @@ function Skills() {
   const { theme } = useTheme();
   
   const skillGroups = [
-    [HTMLLogo, CSSLogo, ReactLogo], 
-    [PythonLogo, CppLogo, CLogo],
-    [GitLogo]
+    [HTMLLogo, CSSLogo, JSlogo], 
+    [ReactLogo, CppLogo, CLogo],
+    [PythonLogo,GitLogo]
   ];
 
             const preventDefault = (f) => {

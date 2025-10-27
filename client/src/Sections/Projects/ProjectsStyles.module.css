@@ -325,6 +325,7 @@
 }
 
 @media only screen and (min-device-width: 834px) and (max-device-width: 1210px){
+
   .sliderContainer{
     height: 430px;
     width: 720px;
@@ -334,4 +335,19 @@
   .dotsContainer{
     height: 200px;
   }
+}
+
+@media only screen and (max-width: 844px) and (orientation: landscape){
+  .container{
+      padding: 4rem 3rem;
+  }
+  .sliderContainer{
+    height: 400px; 
+    left: 1px;
+  }
+}
+@media only screen and (min-width: 834px) and (max-width: 1210px) and (orientation: landscape){
+.sliderContainer{
+  left: 35px;
+}
 }

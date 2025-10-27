@@ -229,8 +229,21 @@ button:active {
     height: 950px;
     gap: 38px;
   }
+}
+@media only screen and (max-width: 844px) and (orientation: landscape){
+  .Container{
+    height: 720px;
+  }
 
+  .photoContainer{
+    width: 300px;
+    height: 300px;
+  }
 
+  .colormodecontainer{
 
+    right: 80px;
+    top: 10px;
+  }
 
 }
