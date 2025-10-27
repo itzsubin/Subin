@@ -25,3 +25,10 @@ yarn-error.log*
 .env
 .DS_Store
 /server/
+
+
+#Cache
+.cache/
+.parcel-cache/
+.eslintcache
+node_modules/
