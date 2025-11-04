@@ -35,7 +35,16 @@
   border-radius: 4px;
 }
 
-
+@media only screen and (max-width: 720px){
+  .socialNav {
+      top: 79px;
+      left: 300px;
+      gap: 0.6rem;
+      padding: 0.01rem;
+      position: relative;
+      backdrop-filter: blur(100%);
+    }
+}
 
 /* Touch screen only media queries */
 
@@ -90,5 +99,4 @@
       border-radius: none;
     }
   }
-
 

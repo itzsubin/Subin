@@ -120,6 +120,7 @@ button:active {
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
 }
 
+
 /* Touch screen only media queries */
 @media (hover: none) and (pointer: coarse) {
   /* Global touch screen styles */
