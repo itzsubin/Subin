@@ -152,28 +152,7 @@ li:not(.visible).active::before {
 }
 }
 
-@media only screen and (min-width: 834px) and (max-width: 1210px){
-  .navbar{
-      left: 16.5%;
-      
-  }
 
-  li a {
-  color: inherit;
-  text-decoration: none;
-  font-family: 'Roboto Mono', monospace;
-  font-weight: 300;
-  font-size: 1.3rem;
-  text-transform: uppercase;
-  letter-spacing: 1.1px;
-  transition: all 0.3s ease;
-  padding: 0.55rem 1.4rem;
-  display: block;
-  position: relative;
-
-    -webkit-transition: all 0.3s ease;
-}
-}
 
 @media only screen and (max-width: 844px) and (orientation: landscape){
   .navbar{
@@ -182,13 +161,5 @@ li:not(.visible).active::before {
     z-index: 1200;
   }
 }
-@media only screen and (min-width: 834px) and (max-width: 1210px) and (orientation: landscape){
-  .navbar{
-    left: 1%;
-  }
-  li a {
-    font-size: 0.90rem;
-    padding: 0.5rem 1.5rem;
-  }
-}
+
 
