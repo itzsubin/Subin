@@ -120,6 +120,11 @@ button:active {
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
 }
 
+@media (max-width: 1200px ){
+  .colormodecontainer{
+    top: 110px;
+  }
+}
 
 /* Touch screen only media queries */
 @media (hover: none) and (pointer: coarse) {
@@ -181,9 +186,10 @@ button:active {
  @media only screen and (hover: none) and (pointer: coarse) and (min-width: 834px) and (max-width: 1210px) and (orientation: portrait) {
   /* iPads in portrait */
   .colormodecontainer{
-    top: 180px;
+    top: 165px;
   }
 }
+
 
 
 
