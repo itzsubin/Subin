@@ -30,7 +30,7 @@ function Media() {
       <a href="https://www.linkedin.com/in/subin-ghimire-856523255/" target="_blank" rel="noopener noreferrer">
         <img src={icons.linkedin} alt="LinkedIn" className={styles.socialIcon} />
       </a>
-      <a>
+      <a href="#blog" onClick={(e) => e.preventDefault()}>
         <img src={icons.blog} alt="Blog" className={`${styles.socialIcon} ${styles.blogIcon}`} />
       </a>
     </div>

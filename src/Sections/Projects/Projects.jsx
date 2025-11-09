@@ -1,9 +1,10 @@
 import styles from './ProjectsStyles.module.css';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 
 function Projects() {
      const [currentSlide, setCurrentSlide] = useState(0);
-     const objectRef = useRef(null);
+
+
 
      const textSlides = [
           " First Slide Content: Welcome to Project Section.",
