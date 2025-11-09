@@ -8,10 +8,6 @@ function Navbar() {
   const sections = useMemo(() => ['home', 'skills', 'projects', 'contact'], []);
 
   const handleScroll = useCallback(() => {
-    const scrollTop = window.scrollY;
-    const winHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrolled = (scrollTop / winHeight) * 100;
-
     let current = '';
     let maxVisible = 0;
 
