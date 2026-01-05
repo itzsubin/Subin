@@ -1,0 +1,45 @@
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px) translateX(0px);
+    }
+
+    33% {
+        transform: translateY(-20px) translateX(10px);
+    }
+
+    66% {
+        transform: translateY(-10px) translateX(-10px);
+    }
+}
+
+.particles-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+}
+
+.particle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.6;
+    animation-name: float;
+}
+
+
+
+[data-theme='dark'] .particle {
+    background-color: rgba(96, 165, 250, 0.5);
+
+}
+
+[data-theme='light'] .particle {
+    background-color: rgba(37, 99, 235, 0.4);
+
+}

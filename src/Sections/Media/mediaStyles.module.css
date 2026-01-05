@@ -4,99 +4,142 @@
   right: 20px;
   z-index: 1000;
   display: flex;
-  gap: 1.6rem;
+  gap: 2rem;
   align-items: center;
   padding: 1rem;
-  backdrop-filter: blur(100%);
-  background-color: rgba(255, 255, 255, 0.85);
-  border-radius: 0px;
-  overflow: hidden;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.4);
+  background-blend-mode: overlay;
+  transition: all 0.3s ease;
 }
 
 [data-theme='dark'] .socialNav {
-  background-color: rgba(34, 34, 34, 0.85);
+  background-color: rgba(34, 34, 34, 0.4);
 }
+
 
 .socialIcon {
   width: 30px;
   height: 30px;
   transition: all 0.3s ease;
   opacity: 0.9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+/* Target the SVG inside Lucide icons */
+.socialNav a svg {
+  width: 100%;
+  height: 100%;
+  stroke-width: 1.5;
+}
+
 
 .socialIcon:hover {
   opacity: 1;
   transform: scale(1.1) rotate(4deg);
 }
 
+/* Blog icon specific styles */
 .blogIcon {
   width: 50px;
   height: 50px;
   border-radius: 4px;
+  padding: 8px;
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
-@media only screen and (max-width: 720px){
+[data-theme='dark'] .blogIcon {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.blogIcon svg {
+  stroke-width: 1.8;
+}
+
+/* Mobile responsiveness */
+@media only screen and (max-width: 720px) {
   .socialNav {
-      top: 79px;
-      left: 300px;
-      gap: 0.6rem;
-      padding: 0.01rem;
-      position: relative;
-      backdrop-filter: blur(100%);
-    }
+    top: 79px;
+    left: 300px;
+    gap: 0.6rem;
+    padding: 0.6rem;
+    position: relative;
+    backdrop-filter: blur(10px);
+  }
+
+  .socialIcon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .blogIcon {
+    width: 40px;
+    height: 40px;
+    padding: 6px;
+  }
 }
 
 /* Touch screen only media queries */
-
-
 @media (hover: none) and (pointer: coarse) {
-
   .socialIcon:hover {
     opacity: 0.9;
     transform: none;
   }
-  
+
   .socialIcon:active {
     opacity: 0.7;
     transform: scale(0.88);
     transition: transform 0.05s ease, opacity 0.05s ease;
   }
-  
+
   .blogIcon:active {
     opacity: 0.7;
     transform: scale(0.88);
   }
-  
+
   @keyframes tap {
-    0% { transform: scale(0.88); opacity: 0.6; }
-    100% { transform: scale(1); opacity: 0.9; }
+    0% {
+      transform: scale(0.88);
+      opacity: 0.6;
+    }
+
+    100% {
+      transform: scale(1);
+      opacity: 0.9;
+    }
   }
 
-  .blogIcon, .socialIcon:not(:active) {
+  .blogIcon,
+  .socialIcon:not(:active) {
     animation: tap 0.15s ease-out;
   }
 }
-  @media (hover: none) and (pointer: coarse) and (max-width: 480px) {
-    .socialNav {
-      top: 55px;
-      left: 270px;
-      gap: 0.6rem;
-      padding: 0.01rem;
-      position: relative;
-      backdrop-filter: blur(100%);
-    }
-    
-    .socialIcon {
-      width: 30px;
-      height: 30px;
-      transition: transform 0.1s ease, opacity 0.1s ease;
-      cursor: pointer;
-    }
 
-    .blogIcon {
-      width: 40px;
-      height: 45px;
-      border-radius: none;
-    }
+@media (hover: none) and (pointer: coarse) and (max-width: 480px) {
+  .socialNav {
+    top: 48px;
+    left: 290px;
+    gap: 1.5rem;
+    padding: 0.5rem;
+    position: relative;
+    backdrop-filter: blur(10px);
+
   }
 
+  .socialIcon {
+    width: 26px;
+    height: 26px;
+    transition: transform 0.1s ease, opacity 0.1s ease;
+    cursor: pointer;
+  }
+
+  .blogIcon {
+    width: 36px;
+    height: 36px;
+    padding: 5px;
+    border-radius: 4px;
+  }
+}
