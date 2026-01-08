@@ -7,8 +7,8 @@ function Projects() {
 
 
      const textSlides = [
-          " First Slide Content: Welcome to Project Section.",
-          " Second Slide Content: Working on."
+          " Welcome to Project Section",
+          "StudyPal(Working On): An AI-powered learning platform that transforms study materials into interactive flashcards, quizzes, and notes. Features intelligent content generation and adaptive learning tools to enhance retention and comprehension. Also, on my GitHub, there is a public README.md for this project where I commit the same message as I do in my private repo, and I update the README.md as I make progress and changes to my application until I complete that project."
      ];
 
      const nextSlide = () => {

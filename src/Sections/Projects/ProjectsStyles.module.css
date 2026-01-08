@@ -59,6 +59,9 @@
   -webkit-overflow-scrolling: touch;
 }
 
+
+
+
 /* Desktop hover effects only */
 @media (hover: hover) and (pointer: fine) {
   .sliderContainer:hover {
@@ -91,7 +94,7 @@
 }
 
 .slideText {
-  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  font-size: 1rem;
   font-weight: 500;
   line-height: 1.6;
   text-align: center;
