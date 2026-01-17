@@ -1,8 +1,7 @@
-import { useTheme } from '../Common/ThemeContext';
+
 import './FloatingParticles.css';
 
 const FloatingParticles = () => {
-  const { theme } = useTheme(); // theme still triggers re-render
 
   return (
     <>

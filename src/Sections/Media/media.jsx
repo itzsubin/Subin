@@ -1,6 +1,6 @@
 import { useTheme } from '../../Common/ThemeContext';
 import styles from './mediaStyles.module.css';
-import { Github, Linkedin, BookOpen } from 'lucide-react'; 
+import { Github, Linkedin } from 'lucide-react'; 
 import { FaXTwitter as Twitter } from 'react-icons/fa6';
 
 function Media() {
