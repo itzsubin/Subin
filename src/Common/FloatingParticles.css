@@ -28,7 +28,7 @@
 .particle {
     position: absolute;
     border-radius: 50%;
-    opacity: 0.6;
+    opacity: 2;
     animation-name: float;
 }
 
@@ -40,6 +40,6 @@
 }
 
 [data-theme='light'] .particle {
-    background-color: rgba(37, 99, 235, 0.4);
+    background-color: rgba(3, 18, 53, 0.4);
 
 }
