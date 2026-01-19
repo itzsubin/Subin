@@ -44,6 +44,7 @@ function Projects() {
                  
                  <button 
                    className={styles.prevButton} 
+                   disabled={currentSlide === 0}
                    onClick={prevSlide}
                    aria-label="Previous slide"
                  >
@@ -51,6 +52,7 @@ function Projects() {
                  </button>
                  <button 
                    className={styles.nextButton} 
+                    disabled={currentSlide === textSlides.length - 1}
                    onClick={nextSlide}
                    aria-label="Next slide"
                  >
