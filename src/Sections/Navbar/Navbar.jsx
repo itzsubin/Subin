@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
-import { useTheme } from '../../Common/ThemeContext';
+import { useTheme } from '../../Common/Theme/ThemeContext';
 import styles from './NavbarStyles.module.css';
 
 function Navbar() {

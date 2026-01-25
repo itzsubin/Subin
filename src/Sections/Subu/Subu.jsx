@@ -3,7 +3,7 @@ import myPhoto from '../../assets/images/subu-img.png';
 import sun from '../../assets/icons/sun.svg';
 import moon from '../../assets/icons/moon.svg'; 
 import Resume from '../../assets/resumes/Subin Ghimire Resume.pdf'; 
-import { useTheme } from '../../Common/ThemeContext';
+import { useTheme } from '../../Common/Theme/ThemeContext';
 
 function Subu() {
   const {theme, toggleTheme } = useTheme();

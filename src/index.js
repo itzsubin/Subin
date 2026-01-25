@@ -1,8 +1,9 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
-import { ThemeProvider } from './Common/ThemeContext';
+import { ThemeProvider } from './Common/Theme/ThemeContext';
 import { ErrorBoundary } from 'react-error-boundary';
+import Cursor from './Common/Cursor/cursor';
 
 function ErrorFallback({ error, resetErrorBoundary }) {
   return (
@@ -24,6 +25,7 @@ root.render(
       onReset={() => window.location.reload()}
     >
       <ThemeProvider>
+        <Cursor />
         <App />
       </ThemeProvider>
     </ErrorBoundary>

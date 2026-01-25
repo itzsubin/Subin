@@ -5,12 +5,15 @@ import Subu from './Sections/Subu';
 import Skills from './Sections/Skills';
 import Projects from './Sections/Projects';
 import Contact from './Sections/Contact';
-import FloatingParticles from './Common/FloatingParticles';
+import FloatingParticles from './Common/Stars/FloatingParticles';
+import { useTheme } from './Common/Theme/ThemeContext';
 
 function App() {
+  const { theme } = useTheme();
+
   return (
     <>
-      <FloatingParticles />
+      {theme === 'dark' && <FloatingParticles />}
       <div style={{ zIndex: 1, position: 'relative' }}>
         <Navbar />
         <Media />

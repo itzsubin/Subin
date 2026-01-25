@@ -8,7 +8,7 @@ import CSSLogo from '../../assets/Css.png';
 import CppLogo from '../../assets/C++.png';
 import CLogo from '../../assets/C.png';
 import GitLogo from '../../assets/Git.png';
-import { useTheme } from '../../Common/ThemeContext';
+import { useTheme } from '../../Common/Theme/ThemeContext';
 
 function Skills() {
   const { theme } = useTheme();

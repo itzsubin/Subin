@@ -1,4 +1,4 @@
-import { useTheme } from '../../Common/ThemeContext';
+import { useTheme } from '../../Common/Theme/ThemeContext';
 import styles from './mediaStyles.module.css';
 import { Github, Linkedin } from 'lucide-react'; 
 import { FaXTwitter as Twitter } from 'react-icons/fa6';
