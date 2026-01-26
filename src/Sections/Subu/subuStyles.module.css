@@ -186,11 +186,36 @@ button:active {
   }
 }
 
+@media only screen and (hover: none) and (pointer: coarse) and (min-width: 834px) and (max-width: 1210px) and (orientation: landscape) {
+  .container {
+    margin-top: 12rem;
+  }
+
+  .photoContainer {
+    height: 250px;
+    width: 250px;
+    bottom: -20px;
+    left: 1px;
+    margin-top: 1rem;
+  }
+
+  .profilePhoto {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .colormodecontainer {
+    top: 40px;
+    left: 720px;
+  }
+}
+
 @media only screen and (hover: none) and (pointer: coarse) and (min-width: 834px) and (max-width: 1210px) and (orientation: portrait) {
 
-  /* iPads in portrait */
   .colormodecontainer {
-    top: 136px;
+    top: 130px;
     left: 600px;
   }
 }

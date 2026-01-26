@@ -37,7 +37,8 @@
 .sliderWrapper {
   width: 790px;
   margin: 0 auto;
-  position: relative; /* Fixed typo */
+  position: relative;
+  /* Fixed typo */
 }
 
 .sliderContainer {
@@ -71,34 +72,33 @@
 }
 
 .slider {
-  position: relative;
-  height: 200px;
-  overflow: hidden;
+  display: flex;
+  height: 100%;
   width: 100%;
+  will-change: transform;
+  cursor: grab;
+  align-items: center;
+}
+
+.slider:active {
+  cursor: grabbing;
 }
 
 .slide {
-  position: absolute;
-  inset: 0;
+  min-width: 100%;
+  max-width: 100%;
+  flex-shrink: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  transition: opacity 0.6s ease;
   padding: 1rem;
-  text-align: center;
-}
-
-.slide.active {
+  user-select: none;
   opacity: 1;
+  position: relative;
+
 }
 
-.slideText {
-  font-size: 1rem;
-  font-weight: 500;
-  line-height: 1.6;
-  text-align: center;
-}
 
 /* Navigation Buttons */
 .prevButton,
@@ -117,23 +117,33 @@
   justify-content: center;
   cursor: pointer;
   z-index: 10;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  /* Touch optimization */
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
   min-width: 44px;
   min-height: 44px;
 }
 
-/* Desktop hover effects only */
-@media (hover: hover) and (pointer: fine) {
-  .prevButton:hover,
-  .nextButton:hover {
-    background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
-    transform: translateY(-50%) scale(1.15);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
-  }
+/* Explicitly prevent movement on active/focus unless hovering */
+.prevButton:active,
+.nextButton:active,
+.prevButton:focus,
+.nextButton:focus {
+  transform: translateY(-50%);
+}
+
+[data-theme='dark'] .prevButton,
+[data-theme='dark'] .nextButton {
+  background: linear-gradient(145deg, #eee, #ccc);
+  color: #333;
+}
+
+.prevButton:disabled,
+.nextButton:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  background: #888;
 }
 
 .prevButton {
@@ -144,6 +154,16 @@
   right: 10px;
 }
 
+/* Desktop hover effects only */
+@media (hover: hover) and (pointer: fine) {
+
+  .prevButton:hover,
+  .nextButton:hover {
+    transform: translateY(-50%) scale(1.15);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+  }
+}
+
 /* Dots */
 .dotsContainer {
   display: flex;
@@ -152,7 +172,7 @@
   gap: 12px;
   margin-top: 2rem;
   position: absolute;
-  bottom: 20px;
+  bottom: -8px;
   width: 100%;
 }
 
@@ -176,14 +196,15 @@
 }
 
 .dot.activeDot {
-  background-color: #333;
-  transform: scale(1.3);
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+  width: 32px;
+  height: 8px;
+  background: linear-gradient(90deg, #16a34a, #10b981);
+  border-radius: 999px;
+  box-shadow: 0 0 6px rgba(22, 163, 74, 0.4);
 }
 
 [data-theme='dark'] .dot.activeDot {
-  background-color: #fff;
-  box-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.3);
 }
 
 /* Desktop hover effects only */
@@ -191,7 +212,7 @@
   .dot:hover {
     background-color: rgba(0, 0, 0, 0.8);
   }
-  
+
   .visible:hover {
     animation: infiniteScale 1.5s infinite alternate;
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
@@ -202,6 +223,7 @@
   0% {
     transform: scale(1.1);
   }
+
   100% {
     transform: scale(1.3);
   }
@@ -216,7 +238,7 @@
 
 @media (max-width: 900px) {
   .sliderContainer {
-    height: 350px;
+    height: 370px;
     padding: 1.5rem;
   }
 
@@ -233,19 +255,19 @@
 
 @media (max-width: 768px) {
   .container {
-    padding: 3rem 1rem; 
+    padding: 3rem 1rem;
   }
-  
+
   .narrativeContainer {
     padding: 1rem 0;
   }
-  
+
   .sliderWrapper {
     max-width: 100%;
   }
 
   .sliderContainer {
-    height: 380px;
+    height: 370px;
     padding: 1rem;
     margin: 1rem 0;
     border-radius: 12px;
@@ -280,17 +302,17 @@
   .container {
     padding: 2rem 0.5rem;
   }
-  
+
   .sliderContainer {
-    height: 350px;
+    height: 490px;
     padding: 0.5rem;
   }
-  
+
   .slideText {
     height: 115px;
     font-size: 1rem;
   }
-  
+
   .prevButton,
   .nextButton {
     height: 35px;
@@ -303,54 +325,181 @@
   .sliderContainer {
     transition: none;
   }
-  
+
   .sliderContainer:hover {
     transform: none;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
   }
-  
+
   .prevButton,
   .nextButton {
-    transition: none;
+    display: none;
   }
-  
-  .prevButton:hover,
-  .nextButton:hover {
-    transform: translateY(-50%);
-    background: linear-gradient(145deg, #222, #444);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  }
-  
+
   .dotsContainer {
-    top: 270px;
+    top: 400px;
     gap: 11px;
+    bottom: -80px;
   }
 }
 
-@media only screen and (min-device-width: 834px) and (max-device-width: 1210px){
+@media only screen and (min-device-width: 834px) and (max-device-width: 1210px) {
 
-  .sliderContainer{
+  .sliderContainer {
     height: 430px;
     width: 720px;
     left: -11px;
   }
 
-  .dotsContainer{
-    height: 200px;
+  .dotsContainer {
+    top: 360px;
   }
 }
 
-@media only screen and (max-width: 844px) and (orientation: landscape){
-  .container{
-      padding: 4rem 3rem;
+@media only screen and (max-width: 844px) and (orientation: landscape) {
+  .container {
+    padding: 4rem 3rem;
   }
-  .sliderContainer{
-    height: 400px; 
+
+  .sliderContainer {
+    height: 400px;
     left: 1px;
   }
 }
-@media only screen and (min-width: 834px) and (max-width: 1210px) and (orientation: landscape){
-.sliderContainer{
-  left: 35px;
+
+@media only screen and (min-width: 834px) and (max-width: 1210px) and (orientation: landscape) {
+  .sliderContainer {
+    left: 35px;
+  }
 }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce-slow {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease-out;
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 2s ease-in-out infinite;
+}
+
+.projectTitle {
+  font-size: clamp(1.875rem, 4vw, 2.25rem);
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+[data-theme='dark'] .projectTitle {
+  color: #ffffff;
+}
+
+/* Status Badge */
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.375rem 1rem;
+  border-radius: 9999px;
+  background: linear-gradient(145deg, #16a34a, #10b981);
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.pulseDot {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: white;
+  border-radius: 100%;
+  margin-right: 0.5rem;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Project Content */
+.projectContent {
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  text-align: center;
+  max-width: 42rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.75;
+  padding: 0 1rem;
+  color: #4b5563;
+}
+
+[data-theme='dark'] .projectContent {
+  color: #d1d5db;
+}
+
+/* Tech Stack */
+.techStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.techTag {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background-color: #dcfce7;
+  color: #15803d;
+}
+
+[data-theme='dark'] .techTag {
+  background-color: rgba(16, 185, 129, 0.3);
+  color: #6ee7b7;
+}
+
+/* GitHub Info */
+.githubInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+[data-theme='dark'] .githubInfo {
+  color: #9ca3af;
 }
