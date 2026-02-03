@@ -6,12 +6,12 @@ function Cursor({
   DYE_RESOLUTION = 1664,
   CAPTURE_RESOLUTION = 512,
   DENSITY_DISSIPATION = 3.5,
-  VELOCITY_DISSIPATION = 1.5,
+  VELOCITY_DISSIPATION = 2,
   PRESSURE = 0.3,
   PRESSURE_ITERATIONS = 20,
   CURL = 15,
   SPLAT_RADIUS = 0.25,
-  SPLAT_FORCE = 6000,
+  SPLAT_FORCE = 9000,
   SHADING = true,
   COLOR_UPDATE_SPEED = 10,
   BACK_COLOR = { r: 0.5, g: 0, b: 0 },
@@ -696,6 +696,7 @@ function Cursor({
     function resizeCanvas() {
       let width = scaleByPixelRatio(canvas.clientWidth);
       let height = scaleByPixelRatio(canvas.clientHeight);
+      if (width === 0 || height === 0) return false;
       if (canvas.width !== width || canvas.height !== height) {
         canvas.width = width;
         canvas.height = height;
@@ -940,9 +941,14 @@ function Cursor({
 
     function getResolution(resolution) {
       let aspectRatio = gl.drawingBufferWidth / gl.drawingBufferHeight;
+      if (isNaN(aspectRatio) || !isFinite(aspectRatio)) aspectRatio = 1;
       if (aspectRatio < 1) aspectRatio = 1.0 / aspectRatio;
-      const min = Math.round(resolution);
-      const max = Math.round(resolution * aspectRatio);
+      let min = Math.round(resolution);
+      let max = Math.round(resolution * aspectRatio);
+
+      if (min < 1) min = 1;
+      if (max < 1) max = 1;
+
       if (gl.drawingBufferWidth > gl.drawingBufferHeight) return { width: max, height: min };
       else return { width: min, height: max };
     }
