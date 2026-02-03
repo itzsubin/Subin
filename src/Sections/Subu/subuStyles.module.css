@@ -123,6 +123,7 @@ button:active {
 @media (max-width: 1200px) {
   .colormodecontainer {
     top: 110px;
+    right: 40px;
   }
 }
 
@@ -208,7 +209,8 @@ button:active {
 
   .colormodecontainer {
     top: 40px;
-    left: 720px;
+    right: 40px;
+    left: auto;
   }
 }
 
@@ -216,6 +218,7 @@ button:active {
 
   .colormodecontainer {
     top: 130px;
-    left: 600px;
+    right: 40px;
+    left: auto;
   }
 }
