@@ -22,7 +22,10 @@ A modern, responsive, and interactive personal portfolio website built with Reac
 ## 🛠️ Tech Stack
 
 - **Frontend**: React 19, JSX
-- **Styling**: Tailwind CSS (v3.4), CSS Modules, CSS Variables
+- **Styling**: 
+  - **Native CSS Modules**: Main styling method for component isolation.
+  - **CSS Variables**: Extensive use for theming and consistency.
+  - **Tailwind CSS**: Utility classes (v3.4).
 - **Icons**: Lucide React, React Icons
 - **State Management**: React Context API (`ThemeContext`)
 - **Structure**: Component-based architecture bootstrapped with `create-react-app`.
