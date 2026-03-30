@@ -11,7 +11,7 @@ function Projects() {
   const projects = [
     {
       title: "Welcome",
-      content: "Explore my latest projects and see what I've been building. Swipe or click the arrows to navigate through my work.",
+      content: "Explore my latest projects and see what I've been building. Navigate through my work.",
     },
     {
       title: "StudyPal",
