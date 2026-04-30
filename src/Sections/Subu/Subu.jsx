@@ -2,7 +2,7 @@ import styles from './subuStyles.module.css';
 import myPhoto from '../../assets/images/subu-img.png';
 import sun from '../../assets/icons/sun.svg';
 import moon from '../../assets/icons/moon.svg';
-import Resume from '../../assets/resumes/Subin Ghimire Resume.pdf';
+import Resume from '../../assets/resumes/Subin_Resume.pdf';
 import { useTheme } from '../../Common/Theme/ThemeContext';
 
 function Subu() {

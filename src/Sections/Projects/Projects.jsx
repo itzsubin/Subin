@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaGithub, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import styles from './ProjectsStyles.module.css';
+import cover1 from '../../assets/Project Covers/cover1.png';
 
 function Projects() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -18,7 +19,8 @@ function Projects() {
       status: "In Development",
       content: "An AI-powered learning platform that transforms study materials into interactive flashcards, quizzes, and notes. Features intelligent content generation and adaptive learning tools to enhance retention and comprehension.",
       tech: ["AI/ML", "React", "TypeScript", "Tailwind CSS"],
-      github: "Public README with regular updates",
+      githubLink: "https://github.com/itzsubin/StudyPal",
+      image: cover1,
     }
   ];
 
@@ -73,6 +75,8 @@ function Projects() {
     };
   };
 
+  const currentProject = projects[currentSlide];
+
   return (
     <section id="projects" className={styles.container}>
       <div className={styles.info}>
@@ -85,6 +89,15 @@ function Projects() {
             onTouchStart={onTouchStart}
             onTouchMove={onTouchMove}
             onTouchEnd={onTouchEnd}
+            style={
+              currentProject?.image
+                ? {
+                  backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(${currentProject.image})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }
+                : {}
+            }
           >
             <div
               className={styles.slider}
@@ -96,7 +109,7 @@ function Projects() {
                   className={styles.slide}
                 >
                   {/* Title */}
-                  <h2 className={styles.projectTitle}>
+                  <h2 className={styles.projectTitle} style={project.image ? { color: '#ffffff' } : {}}>
                     {project.title}
                   </h2>
 
@@ -109,7 +122,7 @@ function Projects() {
                   )}
 
                   {/* Content */}
-                  <p className={styles.projectContent}>
+                  <p className={styles.projectContent} style={project.image ? { color: '#f3f4f6' } : {}}>
                     {project.content}
                   </p>
 
@@ -125,11 +138,23 @@ function Projects() {
                   )}
 
                   {/* GitHub Info */}
-                  {project.github && (
-                    <div className={styles.githubInfo}>
-                      <FaGithub />
-                      <span>{project.github}</span>
-                    </div>
+                  {(project.githubLink || project.github) && (
+                    project.githubLink ? (
+                      <a
+                        href={project.githubLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.githubInfo}
+                        style={project.image ? { color: '#e5e7eb', textDecoration: 'none', cursor: 'pointer' } : { textDecoration: 'none', cursor: 'pointer' }}
+                      >
+                        <FaGithub />
+                      </a>
+                    ) : (
+                      <div className={styles.githubInfo} style={project.image ? { color: '#e5e7eb' } : {}}>
+                        <FaGithub />
+                        <span>{project.github}</span>
+                      </div>
+                    )
                   )}
                 </div>
               ))}
