@@ -4,7 +4,7 @@
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 
-A modern, responsive, and interactive personal portfolio website built with React 19 and Tailwind CSS. This project showcases my skills, experience, and projects with a seamless dark/light theme toggle, engaging animations, and a clean, professional design.
+A modern, responsive, and interactive personal portfolio website built with React 19, CSS3 Modules, and Tailwind CSS. This project showcases my skills, experience, and projects with a seamless dark/light theme toggle, engaging animations, and a clean, professional design.
 
 ## Features
 
