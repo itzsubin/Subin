@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FaGithub, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import styles from './ProjectsStyles.module.css';
 import cover1 from '../../assets/Project Covers/cover1.png';
+import cover2 from '../../assets/Project Covers/allerly.png';
 
 function Projects() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -21,7 +22,14 @@ function Projects() {
       tech: ["AI/ML", "React", "TypeScript", "Tailwind CSS"],
       githubLink: "https://github.com/itzsubin/StudyPal",
       image: cover1,
-    }
+    },
+    {
+      title: "Allerly",
+      content: "A cross-platform mobile app that eliminates dining anxiety for people with severe food allergies. Combines real-time location data with AI-driven menu analysis to cross-reference personal allergy profiles against nearby restaurant menus, instantly flagging safe and unsafe options.",
+      tech: ["Flutter", "Supabase", "AI", "Mapbox"],
+      githubLink: "https://github.com/crobati/tab-12-allerly-CSCE3444",
+      image: cover2,
+    },
   ];
 
   const minSwipeDistance = 50;
