@@ -6,7 +6,7 @@
 
 A modern, responsive, and interactive personal portfolio website built with React 19 and Tailwind CSS. This project showcases my skills, experience, and projects with a seamless dark/light theme toggle, engaging animations, and a clean, professional design.
 
-## 🌟 Features
+## Features
 
 - **Dynamic Theme System**: 
   - Seamless Dark/Light mode toggle with persistent local storage preference.
@@ -19,7 +19,7 @@ A modern, responsive, and interactive personal portfolio website built with Reac
 - **Functional Contact Form**: Integrated with **Web3Forms** for real-time email delivery.
 - **Modern Tech Stack**: Built with React 19, Lucide Icons, and React Icons for a polished look.
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Frontend**: React 19, JSX
 - **Styling**: 
@@ -31,7 +31,7 @@ A modern, responsive, and interactive personal portfolio website built with Reac
 - **Structure**: Component-based architecture bootstrapped with `create-react-app`.
 - **Utilities**: Axios, Web Vitals
 
-## 🚀 Getting Started
+## Getting Started
 
 Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
 
@@ -66,7 +66,7 @@ ensure you have the following installed:
    ```
    Open [http://localhost:3000](http://localhost:3000) to view it in your browser. The page will reload when you make changes.
 
-## 📂 Project Structure
+## Project Structure
 
 ```bash
 src/
@@ -86,14 +86,14 @@ src/
 └── index.js           # App entry point
 ```
 
-## 📜 Scripts
+## Scripts
 
 - `npm start`: Runs the app in development mode.
 - `npm run build`: Builds the app for production to the `build` folder. Use this for deployment.
 - `npm test`: Launches the test runner in interactive watch mode.
 - `npm run eject`: **Note: this is a one-way operation.** Removes the single build dependency from your project.
 
-## 📬 Contact
+## Contact
 
 **Subin Ghimire**  
 📧 [subinghimire51@gmail.com](mailto:subinghimire51@gmail.com)
