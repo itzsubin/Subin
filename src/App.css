@@ -93,7 +93,7 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 
-  overflow-x: hidden;
+  overflow-x: clip;
   width: 100%;
   max-width: 100%;
 }
@@ -106,7 +106,7 @@ body {
   min-height: 100vh;
   padding: 20px;
 
-  overflow-x: hidden;
+  overflow-x: clip;
   max-width: 100%;
 }
 
@@ -261,7 +261,7 @@ footer {
   #root {
     gap: 30px;
     padding: 10px;
-    overflow-x: hidden;
+    overflow-x: clip;
 
   }
 

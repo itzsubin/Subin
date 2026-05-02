@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { FaGithub, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import styles from './ProjectsStyles.module.css';
 import cover1 from '../../assets/Project Covers/cover1.png';
@@ -6,9 +6,9 @@ import cover2 from '../../assets/Project Covers/allerly.png';
 
 function Projects() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [touchStart, setTouchStart] = useState(null);
-  const [dragOffset, setDragOffset] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
+  const sliderRef = useRef(null);
+  const touchStartRef = useRef(null);
+  const dragOffsetRef = useRef(0);
 
   const projects = [
     {
@@ -47,41 +47,57 @@ function Projects() {
   };
 
   const onTouchStart = (e) => {
-    setTouchStart(e.targetTouches[0].clientX);
-    setIsDragging(true);
+    touchStartRef.current = e.targetTouches[0].clientX;
+    if (sliderRef.current) {
+      sliderRef.current.style.transition = 'none';
+    }
   };
 
   const onTouchMove = (e) => {
-    if (touchStart === null) return;
+    if (touchStartRef.current === null) return;
     const currentTouch = e.targetTouches[0].clientX;
-    setDragOffset(currentTouch - touchStart);
+    const diff = currentTouch - touchStartRef.current;
+    dragOffsetRef.current = diff;
+
+    if (sliderRef.current) {
+      const baseTranslate = -currentSlide * 100;
+      sliderRef.current.style.transform = `translateX(calc(${baseTranslate}% + ${diff}px))`;
+    }
   };
 
   const onTouchEnd = () => {
-    if (!touchStart) return;
+    if (touchStartRef.current === null) return;
 
-    const distance = dragOffset;
+    const distance = dragOffsetRef.current;
     const isLeftSwipe = distance < -minSwipeDistance;
     const isRightSwipe = distance > minSwipeDistance;
 
+    let newSlide = currentSlide;
     if (isLeftSwipe && currentSlide < projects.length - 1) {
-      nextSlide();
+      newSlide = currentSlide + 1;
     } else if (isRightSwipe && currentSlide > 0) {
-      prevSlide();
+      newSlide = currentSlide - 1;
     }
 
-    setDragOffset(0);
-    setTouchStart(null);
-    setIsDragging(false);
+    if (newSlide !== currentSlide) {
+      setCurrentSlide(newSlide);
+    } else {
+      if (sliderRef.current) {
+        sliderRef.current.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+        sliderRef.current.style.transform = `translateX(-${currentSlide * 100}%)`;
+      }
+    }
+
+    dragOffsetRef.current = 0;
+    touchStartRef.current = null;
   };
 
-  const getSliderStyle = () => {
-    const baseTranslate = -currentSlide * 100;
-    return {
-      transform: `translateX(calc(${baseTranslate}% + ${dragOffset}px))`,
-      transition: isDragging ? 'none' : 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
-    };
-  };
+  useEffect(() => {
+    if (sliderRef.current) {
+      sliderRef.current.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+      sliderRef.current.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+  }, [currentSlide]);
 
   const currentProject = projects[currentSlide];
 
@@ -109,7 +125,7 @@ function Projects() {
           >
             <div
               className={styles.slider}
-              style={getSliderStyle()}
+              ref={sliderRef}
             >
               {projects.map((project, index) => (
                 <div
