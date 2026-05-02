@@ -26,7 +26,7 @@ function Projects() {
     {
       title: "Allerly",
       content: "A cross-platform mobile app that eliminates dining anxiety for people with severe food allergies. Combines real-time location data with AI-driven menu analysis to cross-reference personal allergy profiles against nearby restaurant menus, instantly flagging safe and unsafe options.",
-      tech: ["Flutter", "Supabase", "AI", "Mapbox"],
+      tech: ["Flutter", "Supabase", "Gemini LLM", "Geolocation"],
       githubLink: "https://github.com/crobati/tab-12-allerly-CSCE3444",
       image: cover2,
     },
