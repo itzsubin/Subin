@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FaGithub, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import styles from './ProjectsStyles.module.css';
-import cover1 from '../../assets/Project Covers/cover1.png';
-import cover2 from '../../assets/Project Covers/allerly.png';
+import cover1 from '../../assets/Project Covers/cover1-opt.jpg';
+import cover2 from '../../assets/Project Covers/allerly-opt.jpg';
 
 function Projects() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -26,7 +26,7 @@ function Projects() {
     {
       title: "Allerly",
       content: "A cross-platform mobile app that eliminates dining anxiety for people with severe food allergies. Combines real-time location data with AI-driven menu analysis to cross-reference personal allergy profiles against nearby restaurant menus, instantly flagging safe and unsafe options.",
-      tech: ["Flutter", "Supabase", "Gemini LLM", "Geolocation"],
+      tech: ["Dart", "Flutter", "Supabase", "Gemini LLM", "Geolocation"],
       githubLink: "https://github.com/crobati/tab-12-allerly-CSCE3444",
       image: cover2,
     },
@@ -98,6 +98,15 @@ function Projects() {
       sliderRef.current.style.transform = `translateX(-${currentSlide * 100}%)`;
     }
   }, [currentSlide]);
+
+  useEffect(() => {
+    projects.forEach((proj) => {
+      if (proj.image) {
+        const img = new Image();
+        img.src = proj.image;
+      }
+    });
+  }, []);
 
   const currentProject = projects[currentSlide];
 
