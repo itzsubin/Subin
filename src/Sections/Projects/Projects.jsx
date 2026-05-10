@@ -4,33 +4,33 @@ import styles from './ProjectsStyles.module.css';
 import cover1 from '../../assets/Project Covers/cover1-opt.jpg';
 import cover2 from '../../assets/Project Covers/allerly-opt.jpg';
 
+const projects = [
+  {
+    title: "Welcome",
+    content: "Explore my latest projects and see what I've been building. Navigate through my work.",
+  },
+  {
+    title: "StudyPal",
+    status: "In Development",
+    content: "An AI-powered learning platform that transforms study materials into interactive flashcards, quizzes, and notes. Features intelligent content generation and adaptive learning tools to enhance retention and comprehension.",
+    tech: ["AI/ML", "React", "TypeScript", "Tailwind CSS"],
+    githubLink: "https://github.com/itzsubin/StudyPal",
+    image: cover1,
+  },
+  {
+    title: "Allerly",
+    content: "A cross-platform mobile app that eliminates dining anxiety for people with severe food allergies. Combines real-time location data with AI-driven menu analysis to cross-reference personal allergy profiles against nearby restaurant menus, instantly flagging safe and unsafe options.",
+    tech: ["Dart", "Flutter", "Supabase", "Gemini LLM", "Geolocation"],
+    githubLink: "https://github.com/crobati/tab-12-allerly-CSCE3444",
+    image: cover2,
+  },
+];
+
 function Projects() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const sliderRef = useRef(null);
   const touchStartRef = useRef(null);
   const dragOffsetRef = useRef(0);
-
-  const projects = [
-    {
-      title: "Welcome",
-      content: "Explore my latest projects and see what I've been building. Navigate through my work.",
-    },
-    {
-      title: "StudyPal",
-      status: "In Development",
-      content: "An AI-powered learning platform that transforms study materials into interactive flashcards, quizzes, and notes. Features intelligent content generation and adaptive learning tools to enhance retention and comprehension.",
-      tech: ["AI/ML", "React", "TypeScript", "Tailwind CSS"],
-      githubLink: "https://github.com/itzsubin/StudyPal",
-      image: cover1,
-    },
-    {
-      title: "Allerly",
-      content: "A cross-platform mobile app that eliminates dining anxiety for people with severe food allergies. Combines real-time location data with AI-driven menu analysis to cross-reference personal allergy profiles against nearby restaurant menus, instantly flagging safe and unsafe options.",
-      tech: ["Dart", "Flutter", "Supabase", "Gemini LLM", "Geolocation"],
-      githubLink: "https://github.com/crobati/tab-12-allerly-CSCE3444",
-      image: cover2,
-    },
-  ];
 
   const minSwipeDistance = 50;
 
