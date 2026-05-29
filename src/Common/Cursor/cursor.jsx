@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useRef } from 'react';
+import { useTheme } from '../Theme/ThemeContext';
 
 function Cursor({
   SIM_RESOLUTION = 224,
@@ -19,6 +20,12 @@ function Cursor({
 }) {
   const canvasRef = useRef(null);
   const animationFrameId = useRef(null);
+  const { theme } = useTheme();
+  const themeRef = useRef(theme);
+
+  useEffect(() => {
+    themeRef.current = theme;
+  }, [theme]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -676,6 +683,10 @@ function Cursor({
 
     function updateFrame() {
       if (!isActive) return;
+      if (themeRef.current !== 'dark') {
+        animationFrameId.current = requestAnimationFrame(updateFrame);
+        return;
+      }
       const dt = calcDeltaTime();
       if (resizeCanvas()) initFramebuffers();
       updateColors(dt);
@@ -1054,7 +1065,7 @@ function Cursor({
         position: 'fixed',
         top: 0,
         left: 0,
-        zIndex: -1,
+        zIndex: 9999,
         pointerEvents: 'none',
         width: '100%',
         height: '100%'
@@ -1066,7 +1077,7 @@ function Cursor({
         style={{
           width: '100vw',
           height: '100vh',
-          display: 'block'
+          display: theme === 'dark' ? 'block' : 'none'
         }}
       />
     </div>
