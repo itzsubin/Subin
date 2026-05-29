@@ -209,3 +209,36 @@
     gap: 0.5rem;
   }
 }
+
+/* Space theme \u2014 dark mode */
+[data-theme='dark'] .container {
+  background: transparent;
+}
+
+[data-theme='dark'] .input,
+[data-theme='dark'] .textarea {
+  background: rgba(15, 15, 35, 0.6);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  color: #e2e8f0;
+}
+
+[data-theme='dark'] .input:focus,
+[data-theme='dark'] .textarea:focus {
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2), 0 0 15px rgba(139, 92, 246, 0.08);
+}
+
+[data-theme='dark'] .submitBtn {
+  background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+}
+
+[data-theme='dark'] .submitBtn:hover:not(:disabled) {
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+}
+
+[data-theme='dark'] .label {
+  color: #94a3b8;
+}

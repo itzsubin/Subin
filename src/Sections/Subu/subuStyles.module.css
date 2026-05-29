@@ -113,7 +113,22 @@ button:active {
 }
 
 [data-theme='dark'] .photoContainer {
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.4),
+    0 0 40px rgba(139, 92, 246, 0.15),
+    0 0 80px rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(139, 92, 246, 0.15);
+}
+
+[data-theme='dark'] .info h1 {
+  background: linear-gradient(135deg, #e2e8f0 0%, #a78bfa 50%, #818cf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+[data-theme='dark'] .info h2 {
+  color: #94a3b8;
 }
 
 [data-theme='dark'] .colormode {

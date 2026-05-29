@@ -7,7 +7,7 @@ import cover2 from '../../assets/Project Covers/allerly-opt.jpg';
 const projects = [
   {
     title: "StudyPal",
-    status: "In Development",
+    status: "",
     content: "An AI-powered learning platform that transforms study materials into interactive flashcards. Engineered an AI pipeline to auto-generate active recall cards, with an architecture designed to support SuperMemo-2 (SM-2) spaced repetition for optimized long-term memory retention.",
     tech: ["AI/ML", "React", "TypeScript", "Tailwind CSS"],
     githubLink: "https://github.com/itzsubin/StudyPal",
@@ -196,44 +196,44 @@ function Projects() {
                 ))}
               </div>
 
-            {/* Navigation Buttons */}
-            <button
-              onClick={prevSlide}
-              disabled={currentSlide === 0}
-              className={styles.prevButton}
-              aria-label="Previous Slide"
-            >
-              <FaArrowLeft />
-            </button>
-            <button
-              onClick={nextSlide}
-              disabled={currentSlide === projects.length - 1}
-              className={styles.nextButton}
-              aria-label="Next slide"
-            >
-              <FaArrowRight />
-            </button>
-          </div>
-
-          {/* Dots Navigation */}
-          <div className={styles.dotsContainer}>
-            {projects.map((_, index) => (
+              {/* Navigation Buttons */}
               <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`${styles.dot} ${index === currentSlide ? styles.activeDot : ''}`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
+                onClick={prevSlide}
+                disabled={currentSlide === 0}
+                className={styles.prevButton}
+                aria-label="Previous Slide"
+              >
+                <FaArrowLeft />
+              </button>
+              <button
+                onClick={nextSlide}
+                disabled={currentSlide === projects.length - 1}
+                className={styles.nextButton}
+                aria-label="Next slide"
+              >
+                <FaArrowRight />
+              </button>
+            </div>
+
+            {/* Dots Navigation */}
+            <div className={styles.dotsContainer}>
+              {projects.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`${styles.dot} ${index === currentSlide ? styles.activeDot : ''}`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
-        </div>
         </div>
 
         {/* Mobile Cards */}
         <div className={styles.mobileCards}>
           {projects.map((project, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className={styles.mobileCard}
               style={
                 project.image
