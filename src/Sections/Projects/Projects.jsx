@@ -12,14 +12,14 @@ const projects = [
   {
     title: "StudyPal",
     status: "In Development",
-    content: "An AI-powered learning platform that transforms study materials into interactive flashcards, quizzes, and notes. Features intelligent content generation and adaptive learning tools to enhance retention and comprehension.",
+    content: "An AI-powered learning platform that transforms study materials into interactive flashcards. Engineered an AI pipeline to auto-generate active recall cards, with an architecture designed to support SuperMemo-2 (SM-2) spaced repetition for optimized long-term memory retention.",
     tech: ["AI/ML", "React", "TypeScript", "Tailwind CSS"],
     githubLink: "https://github.com/itzsubin/StudyPal",
     image: cover1,
   },
   {
     title: "Allerly",
-    content: "A cross-platform mobile app that eliminates dining anxiety for people with severe food allergies. Combines real-time location data with AI-driven menu analysis to cross-reference personal allergy profiles against nearby restaurant menus, instantly flagging safe and unsafe options.",
+    content: "A cross-platform mobile app that eliminates dining anxiety for people with severe food allergies. Combines real-time location data with AI-driven menu analysis to cross-reference personal allergy profiles against nearby restaurant menus, achieving <800ms latency for real-time safety flagging using optimized Gemini LLM prompts.",
     tech: ["Dart", "Flutter", "Supabase", "Gemini LLM", "Geolocation"],
     githubLink: "https://github.com/crobati/tab-12-allerly-CSCE3444",
     image: cover2,

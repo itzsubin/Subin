@@ -120,13 +120,7 @@
 
 @media (hover: none) and (pointer: coarse) and (max-width: 480px) {
   .socialNav {
-    top: 48px;
-    left: 290px;
-    gap: 1.5rem;
-    padding: 0.5rem;
-    position: relative;
-    backdrop-filter: blur(10px);
-
+    display: none;
   }
 
   .socialIcon {
