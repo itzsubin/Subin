@@ -6,10 +6,6 @@ import cover2 from '../../assets/Project Covers/allerly-opt.jpg';
 
 const projects = [
   {
-    title: "Welcome",
-    content: "Explore my latest projects and see what I've been building. Navigate through my work.",
-  },
-  {
     title: "StudyPal",
     status: "In Development",
     content: "An AI-powered learning platform that transforms study materials into interactive flashcards. Engineered an AI pipeline to auto-generate active recall cards, with an architecture designed to support SuperMemo-2 (SM-2) spaced repetition for optimized long-term memory retention.",
@@ -110,88 +106,95 @@ function Projects() {
 
   const currentProject = projects[currentSlide];
 
+  const renderProjectContent = (project) => (
+    <>
+      {/* Title */}
+      <h2 className={styles.projectTitle} style={project.image ? { color: '#ffffff' } : {}}>
+        {project.title}
+      </h2>
+
+      {/* Status Badge */}
+      {project.status && (
+        <div className={styles.statusBadge}>
+          <span className={styles.pulseDot}></span>
+          {project.status}
+        </div>
+      )}
+
+      {/* Content */}
+      <p className={styles.projectContent} style={project.image ? { color: '#f3f4f6' } : {}}>
+        {project.content}
+      </p>
+
+      {/* Tech Stack */}
+      {project.tech && (
+        <div className={styles.techStack}>
+          {project.tech.map((tech, i) => (
+            <span key={i} className={styles.techTag}>
+              {tech}
+            </span>
+          ))}
+        </div>
+      )}
+
+      {/* GitHub Info */}
+      {(project.githubLink || project.github) && (
+        project.githubLink ? (
+          <a
+            href={project.githubLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.githubInfo}
+            style={project.image ? { color: '#e5e7eb', textDecoration: 'none', cursor: 'pointer' } : { textDecoration: 'none', cursor: 'pointer' }}
+          >
+            <FaGithub />
+          </a>
+        ) : (
+          <div className={styles.githubInfo} style={project.image ? { color: '#e5e7eb' } : {}}>
+            <FaGithub />
+            <span>{project.github}</span>
+          </div>
+        )
+      )}
+    </>
+  );
+
   return (
     <section id="projects" className={styles.container}>
       <div className={styles.info}>
         <h1>Projects</h1>
       </div>
       <div className={styles.narrativeContainer}>
-        <div className={styles.sliderWrapper}>
-          <div
-            className={styles.sliderContainer}
-            onTouchStart={onTouchStart}
-            onTouchMove={onTouchMove}
-            onTouchEnd={onTouchEnd}
-            style={
-              currentProject?.image
-                ? {
-                  backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(${currentProject.image})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                }
-                : {}
-            }
-          >
+        <div className={styles.desktopSlider}>
+          <div className={styles.sliderWrapper}>
             <div
-              className={styles.slider}
-              ref={sliderRef}
+              className={styles.sliderContainer}
+              onTouchStart={onTouchStart}
+              onTouchMove={onTouchMove}
+              onTouchEnd={onTouchEnd}
+              style={
+                currentProject?.image
+                  ? {
+                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(${currentProject.image})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                  }
+                  : {}
+              }
             >
-              {projects.map((project, index) => (
-                <div
-                  key={index}
-                  className={styles.slide}
-                >
-                  {/* Title */}
-                  <h2 className={styles.projectTitle} style={project.image ? { color: '#ffffff' } : {}}>
-                    {project.title}
-                  </h2>
-
-                  {/* Status Badge */}
-                  {project.status && (
-                    <div className={styles.statusBadge}>
-                      <span className={styles.pulseDot}></span>
-                      {project.status}
-                    </div>
-                  )}
-
-                  {/* Content */}
-                  <p className={styles.projectContent} style={project.image ? { color: '#f3f4f6' } : {}}>
-                    {project.content}
-                  </p>
-
-                  {/* Tech Stack */}
-                  {project.tech && (
-                    <div className={styles.techStack}>
-                      {project.tech.map((tech, i) => (
-                        <span key={i} className={styles.techTag}>
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-
-                  {/* GitHub Info */}
-                  {(project.githubLink || project.github) && (
-                    project.githubLink ? (
-                      <a
-                        href={project.githubLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.githubInfo}
-                        style={project.image ? { color: '#e5e7eb', textDecoration: 'none', cursor: 'pointer' } : { textDecoration: 'none', cursor: 'pointer' }}
-                      >
-                        <FaGithub />
-                      </a>
-                    ) : (
-                      <div className={styles.githubInfo} style={project.image ? { color: '#e5e7eb' } : {}}>
-                        <FaGithub />
-                        <span>{project.github}</span>
-                      </div>
-                    )
-                  )}
-                </div>
-              ))}
-            </div>
+              <div
+                className={styles.slider}
+                ref={sliderRef}
+              >
+                {projects.map((project, index) => (
+                  <div
+                    key={index}
+                    className={styles.slide}
+                  >
+                    {renderProjectContent(project)}
+                  </div>
+                ))}
+              </div>
 
             {/* Navigation Buttons */}
             <button
@@ -223,6 +226,28 @@ function Projects() {
               />
             ))}
           </div>
+        </div>
+        </div>
+
+        {/* Mobile Cards */}
+        <div className={styles.mobileCards}>
+          {projects.map((project, index) => (
+            <div 
+              key={index} 
+              className={styles.mobileCard}
+              style={
+                project.image
+                  ? {
+                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(${project.image})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                  }
+                  : {}
+              }
+            >
+              {renderProjectContent(project)}
+            </div>
+          ))}
         </div>
       </div>
     </section>

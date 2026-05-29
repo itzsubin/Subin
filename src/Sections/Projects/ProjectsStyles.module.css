@@ -34,11 +34,19 @@
   width: 100%;
 }
 
+.desktopSlider {
+  display: block;
+  width: 100%;
+}
+
+.mobileCards {
+  display: none;
+}
+
 .sliderWrapper {
   width: 790px;
   margin: 0 auto;
   position: relative;
-  /* Fixed typo */
 }
 
 .sliderContainer {
@@ -172,7 +180,7 @@
   gap: 12px;
   margin-top: 2rem;
   position: absolute;
-  bottom: -8px;
+  bottom: -30px;
   width: 100%;
 }
 
@@ -273,6 +281,30 @@
     border-radius: 12px;
   }
 
+  .desktopSlider {
+    display: none;
+  }
+
+  .mobileCards {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+  }
+
+  .mobileCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 0.5rem;
+    border-radius: 16px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.025), rgba(240, 240, 240, 0.008));
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    width: 100%;
+  }
+
+
   .slideText {
     font-size: 1.1rem;
     padding: 0.5rem;
@@ -304,12 +336,38 @@
   }
 
   .sliderContainer {
-    height: 490px;
-    padding: 0.5rem;
+    height: auto;
+    min-height: 520px;
+    padding: 2rem 0.5rem;
+  }
+
+  .projectTitle {
+    font-size: 1.35rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .projectContent {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
+    padding: 0 0.5rem;
+  }
+
+  .techTag {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+  }
+
+  .techStack {
+    margin-bottom: 0.8rem;
+  }
+
+  .githubInfo {
+    margin-top: 0.5rem;
   }
 
   .slideText {
-    height: 115px;
+    height: auto;
     font-size: 1rem;
   }
 
@@ -337,9 +395,11 @@
   }
 
   .dotsContainer {
-    top: 400px;
+    position: relative;
+    top: auto;
+    bottom: auto;
+    margin-top: 1rem;
     gap: 11px;
-    bottom: -80px;
   }
 }
 
@@ -352,7 +412,8 @@
   }
 
   .dotsContainer {
-    top: 360px;
+    top: auto;
+    bottom: -30px;
   }
 }
 
