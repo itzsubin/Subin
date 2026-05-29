@@ -41,6 +41,7 @@
 
 /* DARK THEME — Space */
 [data-theme='dark'] {
+  color-scheme: dark;
   --background-color: #0a0a1a;
   --text-color: #e2e8f0;
   --btn-color: #a78bfa;
@@ -74,7 +75,12 @@
 html {
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-
+  overflow-y: scroll;
+  /* The scrollbar gutter belongs to html, not body.
+     Setting background here (with no transition) makes the
+     gutter snap to the correct theme color instantly — no blink. */
+  background-color: var(--background-color);
+  transition: none;
 }
 
 body {
@@ -337,12 +343,15 @@ footer {
   width: 5px;
 }
 
+::-webkit-scrollbar-track {
+  /* Match the html background exactly — since html has transition:none,
+     this snaps instantly when the theme changes (no blink). */
+  background: var(--background-color);
+  transition: none;
+}
 
 ::-webkit-scrollbar-thumb {
   background: var(--btn-color);
   border-radius: 10px;
-}
-
-[data-theme='dark'] ::-webkit-scrollbar-track {
-  background: rgba(10, 10, 26, 0.5);
+  transition: none;
 }

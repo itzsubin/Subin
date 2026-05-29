@@ -10,7 +10,10 @@ export const ThemeProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    document.body.setAttribute('data-theme', theme);
+    // Set on documentElement (html) so the scrollbar (rendered at the root level)
+    // inherits the correct color-scheme immediately — prevents the blink on toggle.
+    document.documentElement.setAttribute('data-theme', theme);
+    document.documentElement.style.colorScheme = theme === 'dark' ? 'dark' : 'light';
     localStorage.setItem('theme', theme);
   }, [theme]);
 
